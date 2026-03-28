@@ -6,9 +6,13 @@ import path from "path";
  * All provinces & territories that may have `data/{slug}_facilities.json`.
  * `discoverCanadaProvinceSlugsFromData()` finds which of these files exist and
  * loads each in one batch (`readFileSync` + try/catch → [] per file).
- * Maps: with `place_id`, `https://www.google.com/maps/place/?q=place_id:{place_id}`
- * (full `q` value is URI-encoded). If `place_id` is missing/empty, fall back to
- * `https://www.google.com/maps/search/?api=1&query={encoded_address}`.
+ * Maps URLs (CRITICAL):
+ * - With non-empty `place_id`: `https://www.google.com/maps/place/?q=place_id:{place_id}`
+ *   (`q` is URI-encoded, e.g. `place_id%3AChIJ...`).
+ * - Otherwise: `https://www.google.com/maps/search/?api=1&query={encoded_address}`.
+ *
+ * All 13 province/territory slugs below are loaded from `data/{slug}_facilities.json` when present
+ * (`discoverCanadaProvinceSlugsFromData` + `readFileSync` + try/catch → [] per file).
  */
 const ALL_CANADA_PROVINCE_SLUGS = [
   "alberta",
@@ -82,6 +86,8 @@ type CanadaFacilityRaw = {
   name: string;
   care_type?: string;
   type?: string;
+  /** Google-style category string (comma-separated), common in scraped exports. */
+  subtypes?: string;
   address: string;
   city: string;
   /** Some exports use `state` for the province name (e.g. Alberta). */
@@ -175,14 +181,26 @@ function buildCanadaMapsUrl(
 ): string | undefined {
   const pid = (placeId ?? "").trim();
   if (pid) {
-    const q = `place_id:${pid}`;
-    return `https://www.google.com/maps/place/?q=${encodeURIComponent(q)}`;
+    return `https://www.google.com/maps/place/?q=${encodeURIComponent(`place_id:${pid}`)}`;
   }
   const addr = fullAddress.trim();
   if (addr) {
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}`;
   }
   return undefined;
+}
+
+function careTypesFromCanadaRaw(f: CanadaFacilityRaw): string[] {
+  const single = (f.care_type ?? f.type ?? "").trim();
+  if (single) return [single];
+  const sub = (f.subtypes ?? "").trim();
+  if (sub) {
+    return sub
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+  return [];
 }
 
 function transformCanadaFacilities(
@@ -215,7 +233,7 @@ function transformCanadaFacilities(
       mapsUrl: mapsUrl ?? null,
       rating: f.rating ?? null,
       reviewCount: f.reviews ?? null,
-      careTypes: (f.care_type ?? f.type) ? [f.care_type ?? f.type ?? ""] : [],
+      careTypes: careTypesFromCanadaRaw(f),
       featured: f.featured ?? undefined,
       premium: f.premium ?? undefined,
       recommended: f.recommended ?? undefined,
