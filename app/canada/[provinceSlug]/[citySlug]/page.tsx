@@ -7,7 +7,7 @@ import {
   getOtherCitiesInProvince,
 } from "@/lib/canadaFacilities";
 
-const siteUrl = "https://urgentcaredirectories.com";
+const siteUrl = "https://fertilityclinicdirectories.com";
 
 type CanadaCityPageProps = {
   params: Promise<{ provinceSlug: string; citySlug: string }>;
@@ -24,8 +24,8 @@ export async function generateMetadata({
   const { provinceName, cityName, facilities: cityFacilities } =
     await getCanadaCityFacilities(safeProvince, safeCity);
   const count = Array.isArray(cityFacilities) ? cityFacilities.length : 0;
-  const title = `Urgent Care Clinics in ${cityName}, ${provinceName}, Canada | Urgent Care Directories`;
-  const description = `Find ${count.toLocaleString()} urgent care clinics in ${cityName}, ${provinceName}. Compare services and practice details. Verified listings with ratings and reviews.`;
+  const title = `Fertility Clinics in ${cityName}, ${provinceName}, Canada | Fertility Clinic Directories`;
+  const description = `Find ${count.toLocaleString()} fertility clinics in ${cityName}, ${provinceName}. Compare services and practice details. Verified listings with ratings and reviews.`;
 
   return {
     title,
@@ -37,14 +37,14 @@ export async function generateMetadata({
       title,
       description,
       url: canonicalPath,
-      siteName: "UrgentCareDirectories.com",
+      siteName: "FertilityClinicDirectories.com",
       type: "website",
       images: [
         {
           url: "/og-image.svg",
           width: 1200,
           height: 630,
-          alt: `${cityName}, ${provinceName} urgent care clinic directory preview`,
+          alt: `${cityName}, ${provinceName} fertility clinic directory preview`,
         },
       ],
     },
@@ -94,7 +94,7 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
   const careTypesText =
     careTypes.length > 0
       ? careTypes.slice(0, 4).join(", ")
-      : "urgent care services";
+      : "fertility and reproductive health services";
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -103,7 +103,7 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "UrgentCareDirectories.com",
+        name: "FertilityClinicDirectories.com",
         item: `${siteUrl}/`,
       },
       {
@@ -130,20 +130,20 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
   const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Urgent Care Clinics in ${cityName}, ${provinceName}, Canada`,
+    name: `Fertility Clinics in ${cityName}, ${provinceName}, Canada`,
     url: `${siteUrl}/canada/${provinceSlugNorm}/${citySlugNorm}`,
     isPartOf: {
       "@type": "WebSite",
-      name: "UrgentCareDirectories.com",
+      name: "FertilityClinicDirectories.com",
       url: `${siteUrl}/`,
     },
     about: [
-      { "@type": "Thing", name: `${cityName} urgent care clinics` },
-      { "@type": "Thing", name: `${provinceName} urgent care services` },
-      { "@type": "Thing", name: "General urgent care" },
-      { "@type": "Thing", name: "Urgent care services" },
-      { "@type": "Thing", name: "Minor injury treatment" },
-      { "@type": "Thing", name: "Preventive care" },
+      { "@type": "Thing", name: `${cityName} fertility clinics` },
+      { "@type": "Thing", name: `${provinceName} reproductive health services` },
+      { "@type": "Thing", name: "General fertility care" },
+      { "@type": "Thing", name: "Reproductive health services" },
+      { "@type": "Thing", name: "Women's health" },
+      { "@type": "Thing", name: "Family planning" },
     ],
     speakable: {
       "@type": "SpeakableSpecification",
@@ -163,14 +163,14 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
       />
       <header className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-          Urgent Care Providers by city
+          Fertility clinics by city
         </p>
         <h1 className="text-3xl font-semibold text-navy">
-          Urgent Care Clinics in {cityName}, {provinceName}
+          Fertility Clinics in {cityName}, {provinceName}
         </h1>
         <p className="max-w-2xl text-sm text-slate-600">
           {cityName} has {facilities.length.toLocaleString()} verified
-          urgent care clinics including {careTypesText}. Browse all options below,
+          fertility clinics including {careTypesText}. Browse all options below,
           each with Google Maps profile links and ratings data where available.
         </p>
         <p className="max-w-2xl text-sm text-slate-600">

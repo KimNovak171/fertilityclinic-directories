@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Urgent Care Directories",
+  title: "Privacy Policy | Fertility Clinic Directories",
   description:
-    "Privacy policy for UrgentCareDirectories.com. How we collect, use, and protect your information when you use our urgent care directory.",
+    "Privacy policy for FertilityClinicDirectories.com. How we collect, use, and protect your information when you use our fertility clinic directory.",
   alternates: {
     canonical: "/privacy",
     languages: {
-      "en-us": "https://urgentcaredirectories.com/privacy",
+      "en-us": "https://fertilityclinicdirectories.com/privacy",
     },
   },
   openGraph: {
-    title: "Privacy Policy | Urgent Care Directories",
+    title: "Privacy Policy | Fertility Clinic Directories",
     url: "/privacy",
-    siteName: "UrgentCareDirectories.com",
+    siteName: "FertilityClinicDirectories.com",
     type: "website",
   },
 };
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
         <section className="space-y-4 text-sm text-slate-700">
           <h2 className="text-lg font-semibold text-navy">1. Introduction</h2>
           <p>
-            UrgentCareDirectories.com (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) operates a directory website that helps patients and families find and compare urgent care clinics across the United States and Canada. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+            FertilityClinicDirectories.com (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) operates a directory website that helps patients and families find and compare fertility clinics across the United States and Canada. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
           </p>
 
           <h2 className="text-lg font-semibold text-navy">2. Information We Collect</h2>
@@ -53,7 +53,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-lg font-semibold text-navy">4. Directory Listings and Public Information</h2>
           <p>
-            Our directory displays information about urgent care clinics that we obtain from public sources (such as Google Maps) or that is provided by clinic owners. Listing details (e.g., name, address, phone, website) are shown to help users compare options. If you are a clinic owner and wish to update or remove your listing, contact us at hello@directoriesnetwork.com.
+            Our directory displays information about fertility clinics that we obtain from public sources (such as Google Maps) or that is provided by clinic owners. Listing details (e.g., name, address, phone, website) are shown to help users compare options. If you are a clinic owner and wish to update or remove your listing, contact us at hello@directoriesnetwork.com.
           </p>
 
           <h2 className="text-lg font-semibold text-navy">5. Cookies and Tracking</h2>

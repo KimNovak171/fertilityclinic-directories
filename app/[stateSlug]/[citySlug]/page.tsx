@@ -9,7 +9,7 @@ import {
   getOtherCitiesInState,
 } from "@/lib/stateFacilities";
 
-const siteUrl = "https://urgentcaredirectories.com";
+const siteUrl = "https://fertilityclinicdirectories.com";
 
 type CityPageProps = {
   params: Promise<{ stateSlug: string; citySlug: string }>;
@@ -28,8 +28,8 @@ export async function generateMetadata({
   const { stateName, cityName, facilities: cityFacilities } =
     await getCityFacilities(safeState, safeCity);
   const count = Array.isArray(cityFacilities) ? cityFacilities.length : 0;
-  const title = `Urgent Care Clinics in ${cityName}, ${stateName} | Urgent Care Directories`;
-  const description = `Find trusted urgent care services in ${cityName}, ${stateName}—browse ${count.toLocaleString()} verified practices with contact details, maps, and Google ratings so you can choose with confidence.`;
+  const title = `Fertility Clinics in ${cityName}, ${stateName} | Fertility Clinic Directories`;
+  const description = `Find trusted fertility and reproductive health services in ${cityName}, ${stateName}—browse ${count.toLocaleString()} verified practices with contact details, maps, and Google ratings so you can choose with confidence.`;
 
   return {
     title,
@@ -44,14 +44,14 @@ export async function generateMetadata({
       title,
       description,
       url: canonicalPath,
-      siteName: "UrgentCareDirectories.com",
+      siteName: "FertilityClinicDirectories.com",
       type: "website",
       images: [
         {
           url: "/og-image.svg",
           width: 1200,
           height: 630,
-          alt: `${cityName}, ${stateName} urgent care clinic directory preview`,
+          alt: `${cityName}, ${stateName} fertility clinic directory preview`,
         },
       ],
     },
@@ -108,7 +108,7 @@ export default async function CityPage({ params }: CityPageProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "UrgentCareDirectories.com",
+        name: "FertilityClinicDirectories.com",
         item: `${siteUrl}/`,
       },
       {
@@ -129,37 +129,37 @@ export default async function CityPage({ params }: CityPageProps) {
   const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Urgent Care Clinics in ${cityName}, ${stateName}`,
+    name: `Fertility Clinics in ${cityName}, ${stateName}`,
     url: `${siteUrl}/${stateSlugNorm}/${citySlugNorm}`,
     isPartOf: {
       "@type": "WebSite",
-      name: "UrgentCareDirectories.com",
+      name: "FertilityClinicDirectories.com",
       url: `${siteUrl}/`,
     },
     about: [
       {
         "@type": "Thing",
-        name: `${cityName} urgent care clinics`,
+        name: `${cityName} fertility clinics`,
       },
       {
         "@type": "Thing",
-        name: `${stateName} urgent care services`,
+        name: `${stateName} reproductive health services`,
       },
       {
         "@type": "Thing",
-        name: "General urgent care",
+        name: "General fertility care",
       },
       {
         "@type": "Thing",
-        name: "Urgent care services",
+        name: "Reproductive health services",
       },
       {
         "@type": "Thing",
-        name: "Minor injury treatment",
+        name: "Women's health",
       },
       {
         "@type": "Thing",
-        name: "Preventive care",
+        name: "Family planning",
       },
     ],
     speakable: {
@@ -180,19 +180,19 @@ export default async function CityPage({ params }: CityPageProps) {
       />
       <header className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-          Urgent Care Providers by city
+          Fertility clinics by city
         </p>
         <h1 className="text-3xl font-semibold text-navy">
-          Urgent Care Clinics in {cityName}, {stateName}
+          Fertility Clinics in {cityName}, {stateName}
         </h1>
         <p className="max-w-2xl text-sm text-slate-600">
-          {cityName} has {facilities.length.toLocaleString()} verified urgent care
+          {cityName} has {facilities.length.toLocaleString()} verified fertility
           practices {careTypesClause}. Browse all options below, each with
           Google Maps profile links and ratings data where available.
         </p>
         <p className="max-w-2xl text-sm text-slate-600">
           Compare practices side by side, review services and contact details,
-          and find the right urgent care clinic for you and your family in{" "}
+          and find the right fertility clinic for you and your family in{" "}
           {stateName}.
         </p>
       </header>
@@ -271,4 +271,3 @@ export default async function CityPage({ params }: CityPageProps) {
     </main>
   );
 }
-

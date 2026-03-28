@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://urgentcaredirectories.com/sitemap.xml",
+    sitemap: "https://fertilityclinicdirectories.com/sitemap.xml",
   };
 }
 

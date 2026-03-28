@@ -16,29 +16,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://urgentcaredirectories.com"),
+  metadataBase: new URL("https://fertilityclinicdirectories.com"),
   title: {
-    default: "UrgentCareDirectories.com | Urgent Care Directory",
-    template: "%s | UrgentCareDirectories.com",
+    default: "FertilityClinicDirectories.com | Fertility Clinic Directory",
+    template: "%s | FertilityClinicDirectories.com",
   },
   description:
-    "UrgentCareDirectories.com is a professional, easy-to-use urgent care directory helping patients and families find local urgent care providers and urgent care services across the United States and Canada.",
+    "FertilityClinicDirectories.com is a professional, easy-to-use fertility clinic directory helping patients and families find local fertility clinics and reproductive health services across the United States and Canada.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "UrgentCareDirectories.com | Urgent Care Directory",
+    title: "FertilityClinicDirectories.com | Fertility Clinic Directory",
     description:
-      "Trusted resource to explore and compare urgent care providers and urgent care services across North America.",
+      "Trusted resource to explore and compare fertility clinics and reproductive health providers across North America.",
     url: "/",
-    siteName: "UrgentCareDirectories.com",
+    siteName: "FertilityClinicDirectories.com",
     type: "website",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "UrgentCareDirectories.com logo preview",
+        alt: "FertilityClinicDirectories.com logo preview",
       },
     ],
   },
@@ -69,9 +69,9 @@ export default async function RootLayout({
                 <Link
                   href="/"
                   className="text-[11px] font-bold tracking-[0.28em] sm:text-xs text-white hover:text-teal-soft transition-colors"
-                  aria-label="UrgentCareDirectories.com – go to homepage"
+                  aria-label="FertilityClinicDirectories.com – go to homepage"
                 >
-                  UrgentCareDirectories.com
+                  FertilityClinicDirectories.com
                 </Link>
                 <nav className="flex items-center gap-4" aria-label="Main navigation">
                   <Link
@@ -101,7 +101,7 @@ export default async function RootLayout({
                 </nav>
               </div>
               <p className="ml-4 hidden max-w-xs text-right text-xs text-white/90 sm:block">
-                Trusted urgent care directory for patients and families.
+                Trusted fertility clinic directory for patients and families.
               </p>
             </div>
           </header>
@@ -181,7 +181,7 @@ export default async function RootLayout({
           <footer className="w-full border-t border-teal/10 bg-surface">
             <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-xs text-foreground/80 sm:px-6 lg:px-8">
               <p>
-                © {new Date().getFullYear()} UrgentCareDirectories.com. For
+                © {new Date().getFullYear()} FertilityClinicDirectories.com. For
                 informational purposes only – always verify licensing,
                 certifications, and safety requirements with your local authority.
               </p>
@@ -199,7 +199,7 @@ export default async function RootLayout({
                   Advertise
                 </Link>
                 <Link href="/advertise" className="hover:text-teal-soft">
-                  For urgent care providers
+                  For fertility clinics
                 </Link>
                 <Link href="/advertise" className="hover:text-teal-soft">
                   Featured Listing

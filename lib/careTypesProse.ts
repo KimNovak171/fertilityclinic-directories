@@ -1,27 +1,28 @@
 /**
  * Turn raw Google-style category labels into short, natural phrases for prose
- * (e.g. city page intros). Omits entries that do not look urgent-care-related.
+ * (e.g. city page intros). Omits entries that do not look fertility-clinic-related.
  */
 
 const EXACT_PHRASE: Record<string, string> = {
-  "urgent care center": "urgent care centers",
-  "urgent care clinic": "urgent care clinics",
-  "walk-in clinic": "walk-in clinics",
-  "medical clinic": "medical clinics",
-  "community health centre": "community health centers",
-  "community health center": "community health centers",
-  "after hours clinic": "after-hours clinics",
-  "immediate care center": "immediate care centers",
-  "minor injuries unit": "minor injury units",
-  "emergency care physician": "emergency and urgent care physicians",
-  "family practice physician": "family medicine providers",
+  "fertility clinic": "fertility clinics",
+  "reproductive health clinic": "reproductive health clinics",
+  "women's health clinic": "women's health clinics",
+  "womens health clinic": "women's health clinics",
+  "fertility physician": "fertility physicians",
+  "family planning center": "family planning centers",
+  "obstetrician-gynecologist": "obstetrician-gynecologists",
+  "pregnancy care center": "pregnancy care centers",
+  "birth control center": "birth control centers",
+  gynecologist: "gynecologists",
+  midwife: "midwives",
+  "birth center": "birth centers",
 };
 
-const URGENT_CARE_LIKE =
-  /urgent\s*care|walk-?in|after\s*hours|immediate\s*care|minor\s*injur|medical\s*clinic|community\s*health|primary\s*care|family\s*practice|pediatric/i;
+const FERTILITY_LIKE =
+  /fertility|reproductive|women'?s\s+health|family\s+planning|obstetric|gynec|pregnan|birth\s+control|midwi|birth\s+center/i;
 
 /** Labels that match common noise but are not healthcare services. */
-const NON_URGENT_CARE =
+const NON_FERTILITY =
   /auto\s+repair|collision|transmission|student\s+dormitory|orthodox\s+church|storage\s+facility|insurance\s+agency/i;
 
 function normalizeKey(raw: string): string {
@@ -41,7 +42,7 @@ function humanizeFallback(raw: string): string {
   if (s.endsWith(" center")) {
     return s.replace(/ center$/, " centers");
   }
-  if (s.endsWith("ist") && !s.endsWith("urgent care provider")) {
+  if (s.endsWith("ist") && !s.endsWith("fertility physician")) {
     return `${s}s`;
   }
   if (!s.endsWith("s")) {
@@ -53,9 +54,9 @@ function humanizeFallback(raw: string): string {
 function phraseForLabel(raw: string): string | null {
   const key = normalizeKey(raw);
   if (!key) return null;
-  if (NON_URGENT_CARE.test(key)) return null;
+  if (NON_FERTILITY.test(key)) return null;
   if (EXACT_PHRASE[key]) return EXACT_PHRASE[key];
-  if (!URGENT_CARE_LIKE.test(raw)) return null;
+  if (!FERTILITY_LIKE.test(raw)) return null;
   return humanizeFallback(raw);
 }
 
@@ -83,6 +84,8 @@ export function formatCareTypesClause(
     phrases.push(p);
     if (phrases.length >= maxItems) break;
   }
-  if (phrases.length === 0) return "including urgent care and walk-in services";
+  if (phrases.length === 0) {
+    return "including fertility clinic and reproductive health services";
+  }
   return `including ${oxfordJoin(phrases)}`;
 }

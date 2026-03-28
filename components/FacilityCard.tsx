@@ -163,7 +163,7 @@ export function FacilityCard({ facility }: FacilityCardProps) {
           "@type": "AggregateRating" as const,
           ratingValue: rating,
           bestRating: 5,
-          worstRating: 0,
+          worstRating: 1,
           ratingCount: reviewCount,
           reviewCount: reviewCount,
         }

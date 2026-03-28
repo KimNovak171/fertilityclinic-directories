@@ -9,8 +9,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const stats = getCanadaNationwideStats();
   const total = stats.totalFacilities.toLocaleString();
   const provinces = stats.provinceCount.toLocaleString();
-  const title = `Urgent Care Clinics in Canada | ${total} verified listings | Urgent Care Directories`;
-  const description = `Browse ${total} verified urgent care clinics across ${provinces} provinces and territories—maps, contact info, and Google ratings. Every listing rated 3 stars or higher on Google Maps.`;
+  const title = `Fertility Clinics in Canada | ${total} verified listings | Fertility Clinic Directories`;
+  const description = `Browse ${total} verified fertility clinics across ${provinces} provinces and territories—maps, contact info, and Google ratings. Every listing rated 3 stars or higher on Google Maps.`;
 
   return {
     title,
@@ -22,14 +22,14 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: "/canada",
-      siteName: "UrgentCareDirectories.com",
+      siteName: "FertilityClinicDirectories.com",
       type: "website",
       images: [
         {
           url: "/og-image.svg",
           width: 1200,
           height: 630,
-          alt: "Canada urgent care clinic directory preview",
+          alt: "Canada fertility clinic directory preview",
         },
       ],
     },
@@ -46,13 +46,13 @@ export default async function CanadaLandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
           <div className="space-y-6 text-foreground">
             <p className="inline-flex rounded-full border border-teal bg-surface px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-foreground">
-              Canadian Urgent Care Clinic Directories
+              Canadian Fertility Clinic Directories
             </p>
             <h1 className="text-balance text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-              Urgent Care Clinics in Canada — Province by Province
+              Fertility Clinics in Canada — Province by Province
             </h1>
-            <p className="max-w-2xl text-balance text-sm sm:text-base text-surface/80">
-              Verified urgent care clinics and services across provinces and territories.
+            <p className="max-w-2xl text-balance text-sm sm:text-base text-foreground/80">
+              Verified fertility clinics and reproductive health services across provinces and territories.
               Every practice rated 3★ or higher on Google Maps.
             </p>
           </div>
@@ -62,7 +62,7 @@ export default async function CanadaLandingPage() {
               Choose a province
             </h2>
             <p className="mt-2 text-sm text-foreground/90">
-              Browse verified urgent care clinics by province, then drill down
+              Browse verified fertility clinics by province, then drill down
               by city to compare services and contact details.
             </p>
             <p className="mt-2 text-sm font-medium text-foreground">
