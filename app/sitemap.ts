@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { getCanadaDirectoryIndex } from "@/lib/canadaFacilities";
 import { getDirectoryIndex } from "@/lib/stateFacilities";
 
+export const dynamic = "force-static";
+
 const siteUrl = "https://fertilityclinicdirectories.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -90,7 +92,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-
   return routes;
 }
-
