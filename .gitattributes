@@ -1,0 +1,22 @@
+# Normalize line endings so Git stops reporting whole files as changed.
+# Text files are stored with LF in the repository and checked out with LF,
+# regardless of which machine or editor touched them.
+* text=auto eol=lf
+
+# Binary files — Git must never rewrite these.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.svg  text eol=lf
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
+*.otf   binary
+*.pdf   binary
+*.xlsx  binary
+*.xls   binary
+*.zip   binary
