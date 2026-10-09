@@ -296,7 +296,7 @@ export function FacilityCard({ facility }: FacilityCardProps) {
         )}
       </div>
 
-      {!isClaimed && (
+      {!isClaimed && !isFeatured && !isPremium && (
         <div className="mt-auto border-t border-slate-200 pt-3">
           <a
             href={claimHref}
